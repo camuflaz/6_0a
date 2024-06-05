@@ -13,6 +13,12 @@ class WrongDateOfBirth extends Exception {
 class WrongMenu extends Exception {
 }
 
+class WrongParse extends Exception{
+    public WrongParse(String errorMessage) {
+        super(errorMessage);
+    }
+}
+
 class Main {
     public static Scanner scan = new Scanner(System.in);
 
@@ -42,6 +48,8 @@ class Main {
                 System.out.println("Błędna data urodzenia studenta!");
             } catch (WrongMenu e) {
                 System.out.println("Błędny wybór!");
+            } catch(WrongParse e){
+                System.out.println(e.getMessage());
             }
         }
     }
@@ -100,14 +108,14 @@ class Main {
         (new Service()).addStudent(new Student(name, age, date));
     }
 
-    public static void exercise2() throws IOException {
+    public static void exercise2() throws IOException, WrongParse{
         var students = (new Service()).getStudents();
         for (Student current : students) {
             System.out.println(current.ToString());
         }
     }
 
-    public static void exercise3() throws IOException {
+    public static void exercise3() throws IOException, WrongParse{
         scan.nextLine();
         System.out.println("Podaj imie: ");
         var name = scan.nextLine();
