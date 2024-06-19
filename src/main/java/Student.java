@@ -24,4 +24,5 @@ public class Student {
             throw new WrongParse("Błędny format danych w linii: " + str);
         return new Student(data[0], Integer.parseInt(data[1]), data[2]);
     }
+
 }

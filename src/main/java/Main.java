@@ -1,6 +1,7 @@
 import java.io.IOException;
 import java.util.Scanner;
-
+import java.util.Collections;
+import java.util.Comparator;
 class WrongStudentName extends Exception {
 }
 
@@ -18,6 +19,7 @@ class WrongParse extends Exception{
         super(errorMessage);
     }
 }
+//Napisz metodę, która zwraca listę studentów posortowaną według nazwiska. Możesz wykorzystać wbudowane mechanizmy sortowania lub napisać własny komparator.
 
 class Main {
     public static Scanner scan = new Scanner(System.in);
@@ -35,6 +37,9 @@ class Main {
                         break;
                     case 3:
                         exercise3();
+                        break;
+                    case 4:
+                        exercise4();
                         break;
                     default:
                         return;
@@ -59,9 +64,10 @@ class Main {
         System.out.println("1 - aby dodać studenta");
         System.out.println("2 - aby wypisać wszystkich studentów");
         System.out.println("3 - aby wyszukać studenta po imieniu");
+        System.out.println("4 - aby wypisać wszystkich studentów posortowanych po imieniu");
         System.out.println("0 - aby wyjść z programu");
         String input = scan.next();
-        if(input.equals("0") || input.equals("1") || input.equals("2") || input.equals("3")){
+        if(input.equals("0") || input.equals("1") || input.equals("2") || input.equals("3") || input.equals("4")){
             return Integer.parseInt(input);
         }else throw new WrongMenu();
         
@@ -127,4 +133,20 @@ class Main {
             System.out.println(wanted.ToString());
         }
     }
+    public static void exercise4() throws IOException, WrongParse{
+        var students = (new Service()).getStudents();
+        Collections.sort(students, );
+        for (Student current : students) {
+            System.out.println(current.ToString());
+            //również można spróbować Arrays.sort()
+        }
+    }
+      class Sortbyname() implements Comparator<Student> {
+
+          public int compare(Student a, Student b)
+          {
+
+              return a.GetName().compareTo(b.GetName());
+          }
+      }
 }
